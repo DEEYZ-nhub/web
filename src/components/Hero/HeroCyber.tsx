@@ -45,7 +45,7 @@ export function HeroCyber() {
       style={{
         paddingTop: 'clamp(90px, 14vh, 130px)',
         paddingBottom: 'clamp(40px, 6vh, 60px)',
-        backgroundColor: '#050d1a'
+        background: 'radial-gradient(circle at 50% 18%, rgba(255, 82, 103, 0.16), transparent 30%), radial-gradient(circle at 12% 80%, rgba(121, 217, 255, 0.1), transparent 28%), #070b14'
       }}
     >
       {/* Background Cyber Layers */}
