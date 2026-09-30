@@ -1,0 +1,65 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  background: var(--bg);
+  transition: opacity 0.6s var(--ease-soft), visibility 0.6s var(--ease-soft), transform 0.6s var(--ease-soft);
+}
+
+.overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-2%);
+  pointer-events: none;
+}
+
+.logo {
+  color: var(--accent);
+  animation: pulseGlow 1.8s ease-in-out infinite;
+}
+
+.bar {
+  width: 200px;
+  max-width: 60vw;
+  height: 2px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--accent-soft);
+}
+
+.barFill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  animation: fill 1.3s var(--ease-soft) forwards;
+}
+
+@keyframes fill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.4em;
+  color: var(--accent);
+  opacity: 0;
+  animation: fadeIn 0.6s 0.3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 0.9;
+  }
+}

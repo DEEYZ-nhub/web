@@ -1,0 +1,113 @@
+.comunidad-root {
+  --com-red: #ff2d46;
+  --com-red-soft: #e5384d;
+  --com-card: #07070b;
+  --com-muted: #8e96a5;
+  --com-line: rgba(255, 255, 255, 0.12);
+  --com-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.comunidad-root .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.comunidad-root button:focus-visible,
+.comunidad-root a:focus-visible,
+.comunidad-root textarea:focus-visible,
+.comunidad-root input:focus-visible {
+  outline: 2px solid var(--com-red);
+  outline-offset: 2px;
+}
+
+.comunidad-shimmer {
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0.04) 8%,
+    rgba(255, 255, 255, 0.1) 18%,
+    rgba(255, 255, 255, 0.04) 33%
+  );
+  background-size: 200% 100%;
+  animation: comunidad-shimmer 1.35s ease-in-out infinite;
+}
+
+.comunidad-explore-row {
+  display: grid;
+  gap: 18px;
+}
+
+.comunidad-explore-row--split-a {
+  grid-template-columns: 1.62fr 1fr;
+}
+
+.comunidad-explore-row--thirds {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.comunidad-explore-row--split-b {
+  grid-template-columns: 1fr 1.62fr;
+}
+
+@media (max-width: 980px) {
+  .comunidad-explore-row--split-a,
+  .comunidad-explore-row--thirds,
+  .comunidad-explore-row--split-b {
+    grid-template-columns: 1fr;
+  }
+}
+
+.comunidad-filters {
+  scrollbar-width: none;
+}
+
+.comunidad-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.comunidad-like-pop {
+  animation: comunidad-like-pop 0.42s var(--com-ease);
+}
+
+@keyframes comunidad-shimmer {
+  0% {
+    background-position: 120% 0;
+  }
+  100% {
+    background-position: -40% 0;
+  }
+}
+
+@keyframes comunidad-like-pop {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.22);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comunidad-root *,
+  .comunidad-root *::before,
+  .comunidad-root *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .comunidad-shimmer {
+    animation: none;
+    background: rgba(255, 255, 255, 0.06);
+  }
+}

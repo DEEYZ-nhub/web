@@ -1,0 +1,43 @@
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(229, 49, 74, 0.8);
+  pointer-events: none;
+  z-index: 200;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(229, 49, 74, 0.55);
+  pointer-events: none;
+  z-index: 200;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.25s var(--ease-out), height 0.25s var(--ease-out), background-color 0.25s, border-color 0.25s,
+    opacity 0.2s;
+}
+
+.dot.visible,
+.ring.visible {
+  opacity: 1;
+}
+
+.ring.active {
+  width: 58px;
+  height: 58px;
+  background: rgba(229, 49, 74, 0.12);
+  border-color: rgba(229, 49, 74, 0.85);
+}
