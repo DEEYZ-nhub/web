@@ -3,15 +3,15 @@ import { TiendaExpositor } from '../components/Store/TiendaExpositor';
 import styles from './HomePage.module.css';
 
 const matches = [
-  { time: 'TODAY · 20:00', teams: 'NOVA / VOID', type: 'RANKED DUO', status: 'LIVE SOON' },
-  { time: 'FRI · 21:30', teams: 'EMBER / TITAN', type: 'ARENA CUP', status: 'OPEN' },
-  { time: 'SAT · 19:00', teams: 'ORBIT / RAVEN', type: 'PLAYOFFS', status: 'SOLD OUT' },
+  { time: '20:00', date: 'HOY', teams: 'NOVA / VOID', type: 'RANKED DUO', status: 'EN 18 MIN', tone: 'live' },
+  { time: '21:30', date: 'VIERNES', teams: 'EMBER / TITAN', type: 'ARENA CUP', status: 'INSCRIPCIONES ABIERTAS', tone: 'open' },
+  { time: '19:00', date: 'SÁBADO', teams: 'ORBIT / RAVEN', type: 'PLAYOFFS', status: 'COMPLETO', tone: 'full' },
 ];
 
 const news = [
-  { number: '01', tag: 'SEASON 04', title: 'The climb starts now', copy: 'Fresh ladders, sharper rivals, bigger rewards.' },
-  { number: '02', tag: 'COMMUNITY', title: 'Built in the arena', copy: 'Find your squad and make your name count.' },
-  { number: '03', tag: 'REWARDS', title: 'Win more than pride', copy: 'Unlock drops, kits and limited trophies.' },
+  { number: '01', tag: 'TEMPORADA 04', title: 'Sube de rango', copy: 'Nuevas divisiones, rivales más duros y recompensas que demuestran hasta dónde has llegado.' },
+  { number: '02', tag: 'COMUNIDAD', title: 'Encuentra tu escuadra', copy: 'Forma equipo con jugadores que comparten tu ambición y entra al próximo bracket.' },
+  { number: '03', tag: 'RECOMPENSAS', title: 'Juega por algo más', copy: 'Cada victoria suma puntos, desbloquea drops y te acerca a los premios de la temporada.' },
 ];
 
 export function HomePage() {
@@ -19,33 +19,59 @@ export function HomePage() {
     <>
       <HeroCyber />
 
-      <section className={styles.ticker} aria-label="Arena highlights">
-        <div className={styles.tickerTrack}>
-          <span>RANKED PLAY</span><i /> <span>WEEKLY BRACKETS</span><i /> <span>REAL REWARDS</span><i /> <span>NO EASY WINS</span><i />
-          <span>RANKED PLAY</span><i /> <span>WEEKLY BRACKETS</span><i /> <span>REAL REWARDS</span><i /> <span>NO EASY WINS</span><i />
+      <section className={styles.ticker} aria-label="Actividad de Global Arena">
+        <div className="shell">
+          <div className={styles.tickerInner}>
+            <span><i className={styles.statusDot} /> SERVIDORES ONLINE</span>
+            <strong>2,481</strong>
+            <span className={styles.tickerDivider} />
+            <span>PRÓXIMO EVENTO</span>
+            <strong className={styles.tickerAccent}>ARENA CUP // 21:30</strong>
+            <a href="#tournaments">VER CALENDARIO <b>↗</b></a>
+          </div>
         </div>
       </section>
 
       <section className={styles.intro}>
         <div className="shell">
+          <div className={styles.introTop}>
+            <p className={styles.kicker}>01 / SISTEMA GLOBAL ARENA</p>
+            <span className={styles.liveLabel}><i className={styles.statusDot} /> LIVE PLATFORM</span>
+          </div>
           <div className={styles.introGrid}>
-            <p className={styles.kicker}>01 / THE ARENA</p>
-            <div>
-              <h2>Where pressure<br /><em>creates legends.</em></h2>
-              <p className={styles.lead}>Global Arena is a competitive home for players who want more from every match. Queue up, find your level, and leave a mark.</p>
-              <a className={styles.textLink} href="#tournaments">Explore the arena <span>↗</span></a>
+            <div className={styles.introTitle}><span>NO JUEGUES</span><strong>PARA PASAR</strong><em>EL RATO.</em></div>
+            <div className={styles.introCopy}>
+              <p>Entra a una competición diseñada para jugadores que quieren mejorar, competir y hacerse notar.</p>
+              <div className={styles.featureList}>
+                <div><b>01</b><span>RANKED PLAY</span><small>Sube. Mantén. Domina.</small></div>
+                <div><b>02</b><span>LIVE EVENTS</span><small>Partidas con algo en juego.</small></div>
+                <div><b>03</b><span>REAL REWARDS</span><small>Tu rendimiento tiene premio.</small></div>
+              </div>
+              <a className={styles.primaryLink} href="#tournaments">EXPLORAR LA ARENA <span>↗</span></a>
             </div>
-            <div className={styles.introAside}><strong>24/7</strong><span>always-on<br />competition</span></div>
           </div>
         </div>
       </section>
 
       <section id="stats" className={styles.matches}>
         <div className="shell">
-          <div className={styles.sectionHead}><div><p className={styles.kicker}>02 / LIVE NOW</p><h2>Next in rotation</h2></div><a className={styles.textLink} href="#tournaments">View all matches <span>↗</span></a></div>
-          <div className={styles.matchList}>
-            {matches.map((match, index) => <div className={styles.matchRow} key={match.teams}><span className={styles.matchIndex}>0{index + 1}</span><span className={styles.matchTime}>{match.time}</span><strong>{match.teams}</strong><span className={styles.matchType}>{match.type}</span><span className={`${styles.matchStatus} ${match.status === 'OPEN' ? styles.active : ''}`}>{match.status}</span><span className={styles.arrow}>↗</span></div>)}
+          <div className={styles.sectionHead}>
+            <div><p className={styles.kicker}>02 / ACTIVIDAD</p><h2>Ahora en juego</h2></div>
+            <p className={styles.sectionNote}>Consulta los próximos enfrentamientos<br />y encuentra tu momento.</p>
           </div>
+          <div className={styles.matchList}>
+            {matches.map((match, index) => (
+              <article className={styles.matchRow} key={match.teams}>
+                <span className={styles.matchNumber}>0{index + 1}</span>
+                <div className={styles.matchDate}><strong>{match.time}</strong><span>{match.date}</span></div>
+                <div className={styles.matchTeams}><strong>{match.teams.split(' / ')[0]}</strong><span>VS</span><strong>{match.teams.split(' / ')[1]}</strong></div>
+                <span className={styles.matchType}>{match.type}</span>
+                <span className={`${styles.matchStatus} ${styles[match.tone]}`}><i />{match.status}</span>
+                <span className={styles.arrow}>↗</span>
+              </article>
+            ))}
+          </div>
+          <a className={styles.outlineLink} href="#tournaments">VER TODOS LOS ENFRENTAMIENTOS <span>↗</span></a>
         </div>
       </section>
 
@@ -53,12 +79,21 @@ export function HomePage() {
 
       <section id="tournaments" className={styles.news}>
         <div className="shell">
-          <div className={styles.sectionHead}><div><p className={styles.kicker}>03 / INTEL</p><h2>Inside the arena</h2></div><span className={styles.issue}>ISSUE 004 / 2026</span></div>
-          <div className={styles.newsGrid}>{news.map(item => <article className={styles.newsCard} key={item.number}><span>{item.number}</span><div><small>{item.tag}</small><h3>{item.title}</h3><p>{item.copy}</p><a href="#team">Read story <b>↗</b></a></div></article>)}</div>
+          <div className={styles.sectionHead}>
+            <div><p className={styles.kicker}>03 / CENTRO DE INTELIGENCIA</p><h2>Todo listo.<br /><em>Entra.</em></h2></div>
+            <div className={styles.issueBox}><span>SEASON 04</span><strong>09.30.26</strong><small>GLOBAL ARENA // HQ</small></div>
+          </div>
+          <div className={styles.newsGrid}>
+            {news.map(item => <article className={styles.newsCard} key={item.number}><div className={styles.newsCardTop}><span>{item.number}</span><small>{item.tag}</small></div><div><h3>{item.title}</h3><p>{item.copy}</p><a href="#team">LEER MÁS <b>↗</b></a></div></article>)}
+          </div>
         </div>
       </section>
 
-      <section id="team" className={styles.finalCta}><div className="shell"><p className={styles.kicker}>04 / YOUR MOVE</p><h2>Ready to<br /><em>enter?</em></h2><div className={styles.ctaBottom}><p>The next match is already waiting.</p><a href="#home">Join Global Arena <span>↗</span></a></div></div></section>
+      <section id="team" className={styles.finalCta}>
+        <div className="shell">
+          <div className={styles.ctaPanel}><p className={styles.kicker}>04 / ACCESO AL SISTEMA</p><h2>Tu siguiente<br /><em>partida empieza aquí.</em></h2><div className={styles.ctaBottom}><p><i className={styles.statusDot} /> REGISTRO ABIERTO PARA LA SEASON 04</p><a href="#home">ENTRAR EN GLOBAL ARENA <span>↗</span></a></div></div>
+        </div>
+      </section>
     </>
   );
 }
