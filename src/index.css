@@ -4,21 +4,26 @@
 /* ---------------------------------------------------------------------- */
 
 :root {
-  --bg: #07090d;
-  --bg-elevated: #0d1119;
-  --surface: #101722;
-  --surface-2: #172130;
-  --border: rgba(161, 180, 205, 0.16);
-  --border-strong: rgba(190, 207, 231, 0.28);
+  --bg: #070709;
+  --bg-elevated: #101014;
+  --surface: #15151b;
+  --surface-2: #202028;
+  --border: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.3);
 
-  --fg: #f5f7fb;
-  --fg-muted: #a9b5c8;
-  --fg-dim: #6f7d92;
+  --fg: #f6f4f1;
+  --fg-muted: #96959a;
+  --fg-dim: #5d5c63;
+  --white: #f6f4f1;
+  --muted: #96959a;
+  --panel: #111116;
+  --line: rgba(255, 255, 255, 0.14);
 
-  --accent: #ff5267;
-  --accent-dim: #bd2f4d;
-  --accent-deep: #64172b;
-  --accent-soft: rgba(255, 82, 103, 0.14);
+  --accent: #f04458;
+  --accent-dim: #b72a3f;
+  --accent-deep: #631827;
+  --accent-soft: rgba(240, 68, 88, 0.14);
+  --red: #f04458;
   --cyan: #79d9ff;
   --cyan-soft: rgba(121, 217, 255, 0.12);
 
